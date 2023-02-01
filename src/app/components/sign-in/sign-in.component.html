@@ -1,0 +1,23 @@
+<div class="login-form-flex">
+  <mat-card>
+    <mat-card-title>
+      <h1>Login</h1>
+    </mat-card-title>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="x@it-minds.dk" type="text" autocomplete="off" value="username" required/>
+    </mat-form-field><br><br>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" value="password" required/>
+    </mat-form-field><br><br>
+
+    <mat-card-actions>
+      <div class="button-flex-container">
+        <button mat-raised-button color="primary" (click)="onButtonClick()">Log in</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>
