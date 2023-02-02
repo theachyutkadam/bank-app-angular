@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
+  username = "achyut";
+  password = "123456";
   onButtonClick(){
     console.log("Hello wordl");
   }
