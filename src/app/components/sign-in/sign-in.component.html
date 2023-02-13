@@ -1,0 +1,17 @@
+<form class="example-form">
+  <div class="wrapper">
+    <h1>Login</h1>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="x@it-minds.dk" type="text" autocomplete="off" value="username" required/>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" value="password" required/>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onButtonClick()">Log in</button>
+  </div>
+</form>
