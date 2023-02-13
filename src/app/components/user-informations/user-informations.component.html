@@ -1,0 +1,103 @@
+<div class="mat-elevation-z1">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Action</th>
+      <td mat-cell *matCellDef="let element" class="left-text">
+          <button mat-stroked-button color="primary" (click)="openRecord(element.id, element.username)">View</button>
+      </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> id </th>
+      <td mat-cell *matCellDef="let element" class="left-text">
+        <img src={{element.id}}  width="50" height="auto"  />
+      </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> id </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="first_name">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> first_name </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.first_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="middle_name">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> middle_name </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.middle_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="last_name">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> last_name </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.last_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="contact">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> contact </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.contact}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> gender </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.gender}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="birth_date">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Birth-Date </th>
+      <td mat-cell *matCellDef="let element" class="left-text">{{element.birth_date | date: 'EEEE MMM dd, yyy'}}  </td>
+    </ng-container>
+
+    <ng-container matColumnDef="latidtude">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Latitude </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.address.coordinates.lat | number:'2.1-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="pan_card_number">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>pan_card_number </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.pan_card_number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="adhaar_card_number">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>adhaar_card_number </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.adhaar_card_number}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="is_handicap">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>is_handicap </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.is_handicap}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="handicap_details">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>handicap_details </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.handicap_details}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="maritial_status">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>maritial_status </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.maritial_status}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="user_id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>user_id </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.user_id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accountable_type">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>accountable_type </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.accountable_type}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accountable_id">
+      <th mat-header-cell *matHeaderCellDef  mat-sort-header>accountable_id </th>
+      <td mat-cell *matCellDef="let element" class="left-text"> {{element.accountable_id}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5]"></mat-paginator>
+</div>

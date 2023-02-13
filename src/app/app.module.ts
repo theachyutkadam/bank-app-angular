@@ -27,6 +27,7 @@ import { HttpClientModule} from "@angular/common/http";
 import { MatPaginatorModule} from "@angular/material/paginator";
 import { MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { MatSortModule} from "@angular/material/sort";
+import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatSortModule} from "@angular/material/sort";
     AppComponent,
     UserInformationComponent,
     SignInComponent,
-    UserComponent
+    UserComponent,
+    UserInformationsComponent
   ],
   imports: [
     HttpClientModule,

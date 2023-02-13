@@ -1,0 +1,20 @@
+export interface UserInformations {
+  id: string,
+  first_name: string,
+  middle_name: string,
+  last_name: string,
+  contact: string,
+  gender: string,
+  birth_date: Date,
+  pan_card_number: string,
+  adhaar_card_number: string,
+  is_handicap: boolean,
+  handicap_details: Text,
+  maritial_status: string,
+  user_id: string,
+  accountable_type: string,
+  accountable_id: string,
+  created_at: Date,
+  updated_at: Date,
+  deleted_at: Date
+}

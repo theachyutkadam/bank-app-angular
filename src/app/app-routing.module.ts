@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserInformationComponent } from './components/user-information/user-information.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { UserInformationsComponent } from './components/user-informations/user-informations.component';
 
 const routes: Routes = [
+  { path: 'user_informations', component: UserInformationsComponent },
   { path: 'user_information', component: UserInformationComponent },
   { path: '', component: SignInComponent }
 ];
