@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+// import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -8,10 +8,13 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   onButtonClick(){
     // alert("Welcome! " + this.username + " " + this.password);
     // console.log(this.username);
+    // debugger
+    alert(this)
+    // alert(JSON.stringify(this));
     // console.log(this.password);
   }
 }

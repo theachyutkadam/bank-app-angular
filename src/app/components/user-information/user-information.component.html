@@ -1,14 +1,8 @@
-<app-sign-in></app-sign-in>
-
 <mat-card>
   <mat-card-header>
+    <mat-card-title><h1>{{user_information}}</h1></mat-card-title>
     <mat-card-title><h1>{{user_information.title}}</h1></mat-card-title>
-    <mat-card-subtitle>{{user_information.first_name}}</mat-card-subtitle>
-    <mat-card-subtitle>{{user_information.last_name}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    {{user_information.content}}
-  </mat-card-content>
 </mat-card>
 
 <table table-hover>
