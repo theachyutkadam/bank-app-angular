@@ -18,15 +18,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { UserComponent } from './components/user/user.component';
+import { UserComponent } from './components/users/index/index.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { UserInformationComponent } from './components/user-information/user-information.component';
+import { UserInformationComponent } from './components/user-informations/user-information.component';
 
 
 import { HttpClientModule} from "@angular/common/http";
 import { MatPaginatorModule} from "@angular/material/paginator";
 import { MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { MatSortModule} from "@angular/material/sort";
+import { FormsComponent } from './components/users/forms/forms.component';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatSortModule} from "@angular/material/sort";
     AppComponent,
     UserInformationComponent,
     SignInComponent,
-    UserComponent
+    UserComponent,
+    FormsComponent
   ],
   imports: [
     HttpClientModule,
