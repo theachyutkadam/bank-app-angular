@@ -7,8 +7,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./particular-form.component.css']
 })
 export class ParticularFormComponent implements OnInit {
-  // myForm: any;
-
   myForm!: FormGroup;
   constructor(private fb: FormBuilder) {}
 
