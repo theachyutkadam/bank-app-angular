@@ -18,15 +18,15 @@ export class HttpServices {
   httpHeaderWithToken = new HttpHeaders({
     'Accept': 'application/json',
     'content-type': 'application/json',
-    // 'QpApiKey': `${api_token}`,
     'Authorization': `Bearer ${user_token}`,
   })
 
   get(url: any): Observable<any>{
-    console.log("************");
-    console.log(`${api_base_url}${url}`)
-    console.log("************");
     return this._http.get(`${api_base_url}${url}`)
+  }
+
+  postApi(url: any, obj: any){
+    return this._http.post(`${api_base_url}${url}`, obj)
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServices } from 'src/app/connections/service/http-services';
 
 @Component({
   selector: 'app-particular-form',
@@ -8,25 +9,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ParticularFormComponent implements OnInit {
   myForm!: FormGroup;
-  constructor(private fb: FormBuilder) {}
+  constructor(private _http: HttpServices, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initializeform()
   }
 
   initializeform(){
-
     this.myForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.maxLength(50)]]
+      amount: ['', [Validators.required]],
+      card_id: ['', [Validators.required]],
+      sender_id: ['', [Validators.required]],
+      receiver_id: ['', [Validators.required]]
     })
   }
 
-  onSubmit(form: FormGroup) {
+  create(form: FormGroup) {
     console.log('Valid?', form.valid); // true or false
-    console.log('Name', form.value.name);
-    console.log('Email', form.value.email);
-    console.log('Message', form.value.message);
+    let particularObj = {
+      'amount': form.value.amount,
+      'card_id': form.value.card_id,
+      'sender_id': form.value.sender_id,
+      'receiver_id': form.value.receiver_id
+    }
+
+    this._http.postApi('particulars',particularObj).subscribe(
+      (res:any) => {
+        console.log('++++++++++++');
+        console.warn('response:', res);
+        console.log('++++++++++++');
+      }
+    )
   }
 }

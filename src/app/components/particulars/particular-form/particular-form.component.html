@@ -1,30 +1,43 @@
 <p>particular-form works!</p>
-<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+<form [formGroup]="myForm" (ngSubmit)="create(myForm)">
+
   <div>
     <label>
-      Name:
-      <input formControlName="name" placeholder="Your name">
+      Amount:
+      <input formControlName="amount" placeholder="Your amount">
     </label>
-    <div *ngIf="myForm.get('name')?.invalid && (myForm.get('name')?.dirty || myForm.get('name')?.touched)">
-      Please provide a name.
+    <div *ngIf="myForm.get('amount')?.invalid && (myForm.get('amount')?.dirty || myForm.get('amount')?.touched)">
+      Please provide a amount.
     </div>
   </div>
+
   <div>
     <label>
-      Email:
-      <input formControlName="email" placeholder="Your email">
+      Card:
+      <input formControlName="card_id" placeholder="Your card_id">
     </label>
-    <div *ngIf="myForm.get('email')?.invalid && (myForm.get('email')?.dirty || myForm.get('email')?.touched)">
-      Please provide a valid email address.
+    <div *ngIf="myForm.get('card_id')?.invalid && (myForm.get('card_id')?.dirty || myForm.get('card_id')?.touched)">
+      Please provide a valid card_id address.
     </div>
   </div>
+
   <div>
     <label>
-      Message:
-      <input formControlName="message" placeholder="Your message">
+      Sender:
+      <input formControlName="sender_id" placeholder="Your sender_id">
     </label>
-    <div *ngIf="myForm.get('message')?.invalid && (myForm.get('message')?.dirty || myForm.get('message')?.touched)">
-      Messages maximum 15 characters long.
+    <div *ngIf="myForm.get('sender_id')?.invalid && (myForm.get('sender_id')?.dirty || myForm.get('sender_id')?.touched)">
+      Please provide a valid sender_id address.
+    </div>
+  </div>
+
+  <div>
+    <label>
+      Receiver:
+      <input formControlName="receiver_id" placeholder="Your receiver_id">
+    </label>
+    <div *ngIf="myForm.get('receiver_id')?.invalid && (myForm.get('receiver_id')?.dirty || myForm.get('receiver_id')?.touched)">
+      Please provide a valid receiver_id address.
     </div>
   </div>
   <button type="submit" [disabled]="myForm.invalid">Send</button>
