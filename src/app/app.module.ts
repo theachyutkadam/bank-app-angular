@@ -17,9 +17,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 
 import { UserComponent } from './components/users/index/index.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignInComponent } from './components/authentication/sign-in/sign-in.component';
 import { UserInformationComponent } from './components/user-informations/user-information.component';
 
 
@@ -28,6 +31,9 @@ import { MatPaginatorModule} from "@angular/material/paginator";
 import { MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { MatSortModule} from "@angular/material/sort";
 import { FormsComponent } from './components/users/forms/forms.component';
+import { SignUpComponent } from './components/authentication/sign-up/sign-up.component';
+import { IndexComponent } from './components/particulars/index/index.component';
+import { ParticularFormComponent } from './components/particulars/particular-form/particular-form.component';
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
 @NgModule({
@@ -35,16 +41,19 @@ import { FormsComponent } from './components/users/forms/forms.component';
     AppComponent,
     UserInformationComponent,
     SignInComponent,
+    IndexComponent,
     UserComponent,
-    FormsComponent
+    FormsComponent,
+    SignUpComponent,
+    IndexComponent,
+    ParticularFormComponent
   ],
   imports: [
     HttpClientModule,
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-
-
+    ReactiveFormsModule,
     BrowserModule,
     MatCardModule,
     MatInputModule,
