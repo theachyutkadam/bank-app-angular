@@ -7,7 +7,7 @@ import { IndexComponent } from './components/particulars/index/index.component';
 import { ParticularFormComponent } from './components/particulars/particular-form/particular-form.component';
 
 const routes: Routes = [
-  { path: 'user_information', component: UserInformationComponent },
+  { path: 'user_informations', component: UserInformationComponent },
   { path: 'users/index', component: UserComponent },
   { path: 'particulars/index', component: IndexComponent },
   { path: 'particulars/form', component: ParticularFormComponent },

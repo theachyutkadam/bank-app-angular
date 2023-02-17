@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-// import {FormControl, Validators} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpServices } from 'src/app/connections/service/http-services';
 
 
 @Component({
@@ -7,14 +8,42 @@ import { Component } from '@angular/core';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignInComponent {
-  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  onButtonClick(){
-    // alert("Welcome! " + this.username + " " + this.password);
-    // console.log(this.username);
-    // debugger
-    alert(this)
-    // alert(JSON.stringify(this));
-    // console.log(this.password);
+export class SignInComponent implements OnInit {
+  myForm!: FormGroup;
+
+  constructor(private _http: HttpServices, private fb: FormBuilder) {}
+
+  ngOnInit() {
+    this.initializeform()
+  }
+
+  initializeform(){
+    this.myForm = this.fb.group({
+      email: ['admin@gmail.com', [Validators.required]],
+      password: ['', [Validators.required]]
+    })
+  }
+
+
+  login(form: FormGroup) {
+    console.log('Valid?', form.valid); // true or false
+    let login_credentials = {
+      'email': form.value.email,
+      'password': form.value.password
+    }
+
+    this._http.postApi('users/login',login_credentials).subscribe(
+      (response:any) => {
+        if(response['status'] && response['status'] !== 200){
+          console.log('xxxxxxxxxxerror');
+          console.warn('error:', response);
+        }
+        else{
+          console.log('------true');
+          console.warn('response:', response);
+          sessionStorage.setItem('userToken', response['auth_token']);
+        }
+      }
+    )
   }
 }

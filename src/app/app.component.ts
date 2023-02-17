@@ -1,3 +1,4 @@
+import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bank-app';
+  current_user = false;
+  const userToken = sessionStorage.getItem('userToken')
+  if (userToken) {
+    current_user = true;
+  } else {
+    current_user = false;
+  }
 }
