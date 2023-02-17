@@ -11,11 +11,12 @@ export class ParticularFormComponent implements OnInit {
   myForm!: FormGroup;
   cards: any;
   receivers: any;
-
+  sender: any;
   constructor(private _http: HttpServices, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initializeform()
+    this.sender = sessionStorage.getItem('userInformationId');
   }
 
   initializeform(){
@@ -45,6 +46,7 @@ export class ParticularFormComponent implements OnInit {
   get_receiver() {
     this._http.get('user_informations').subscribe(
       (response: any) => {
+        console.warn("##############")
         console.warn("user_informations", response)
         console.warn("##############")
         this.receivers = response

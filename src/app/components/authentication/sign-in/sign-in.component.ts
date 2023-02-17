@@ -41,7 +41,8 @@ export class SignInComponent implements OnInit {
         else{
           console.log('------true');
           console.warn('response:', response);
-          sessionStorage.setItem('userToken', response['auth_token']);
+          sessionStorage.setItem('authToken', response['auth_token']);
+          sessionStorage.setItem('userInformationId', response['user_information_id']);
         }
       }
     )

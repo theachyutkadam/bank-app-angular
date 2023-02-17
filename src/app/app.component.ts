@@ -7,11 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  current_user = false;
-  const userToken = sessionStorage.getItem('userToken')
-  if (userToken) {
-    current_user = true;
-  } else {
-    current_user = false;
-  }
+  // current_user = false;
+  // const userToken = sessionStorage.getItem('userToken')
+  // if (userToken) {
+  //   current_user = true;
+  // } else {
+  //   current_user = false;
+  // }
 }
