@@ -1,0 +1,46 @@
+<p>particular-form works!</p>
+
+<form [formGroup]="myForm" (ngSubmit)="create(myForm)">
+  <div class="form-group">
+    <label>
+      Amount:
+      <input formControlName="amount" class="form-control" placeholder="Your amount">
+    </label>
+    <div *ngIf="myForm.get('amount')?.invalid && (myForm.get('amount')?.dirty || myForm.get('amount')?.touched)">
+      Please provide a amount.
+    </div>
+  </div>
+
+  <div>
+    <label>
+      Card:
+      <select formControlName="card_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Select Card</option>
+        <option *ngFor="let card of cards" value="{{card.id}}">{{card.title|titlecase }} {{card.number}}</option>
+      </select>
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Sender:
+      <select formControlName="sender_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Select Sender</option>
+        <option *ngFor="let sender of receivers" value="{{sender.id}}">{{sender.full_name|titlecase }}</option>
+      </select>
+    </label>
+  </div>
+
+  <div>
+    <label>
+      Receiver:
+      <select formControlName="receiver_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Select Receiver</option>
+        <option *ngFor="let receiver of receivers" value="{{receiver.id}}">{{receiver.full_name|titlecase }}</option>
+      </select>
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Send</button>
+  <a routerLink="/particulars/index" class="btn btn-light" routerLinkActive="active">Back</a>
+
+</form>
