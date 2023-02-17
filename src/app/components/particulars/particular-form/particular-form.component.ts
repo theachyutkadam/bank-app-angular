@@ -9,6 +9,9 @@ import { HttpServices } from 'src/app/connections/service/http-services';
 })
 export class ParticularFormComponent implements OnInit {
   myForm!: FormGroup;
+  cards: any;
+  receivers: any;
+
   constructor(private _http: HttpServices, private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -16,12 +19,40 @@ export class ParticularFormComponent implements OnInit {
   }
 
   initializeform(){
+    this.get_cards()
+    this.get_receiver()
     this.myForm = this.fb.group({
       amount: ['', [Validators.required]],
       card_id: ['', [Validators.required]],
       sender_id: ['', [Validators.required]],
       receiver_id: ['', [Validators.required]]
     })
+  }
+
+  get_cards() {
+    this._http.get('cards').subscribe(
+      (response: any) => {
+        console.warn("cards", response)
+        console.warn("##############")
+        this.cards = response
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  get_receiver() {
+    this._http.get('user_informations').subscribe(
+      (response: any) => {
+        console.warn("user_informations", response)
+        console.warn("##############")
+        this.receivers = response
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
   create(form: FormGroup) {
@@ -34,9 +65,9 @@ export class ParticularFormComponent implements OnInit {
     }
 
     this._http.postApi('particulars',particularObj).subscribe(
-      (res:any) => {
+      (response:any) => {
         console.log('++++++++++++');
-        console.warn('response:', res);
+        console.warn('response:', response);
         console.log('++++++++++++');
       }
     )

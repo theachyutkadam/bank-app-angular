@@ -1,10 +1,10 @@
 <p>particular-form works!</p>
-<form [formGroup]="myForm" (ngSubmit)="create(myForm)">
 
-  <div>
+<form [formGroup]="myForm" (ngSubmit)="create(myForm)">
+  <div class="form-group">
     <label>
       Amount:
-      <input formControlName="amount" placeholder="Your amount">
+      <input formControlName="amount" class="form-control" placeholder="Your amount">
     </label>
     <div *ngIf="myForm.get('amount')?.invalid && (myForm.get('amount')?.dirty || myForm.get('amount')?.touched)">
       Please provide a amount.
@@ -14,31 +14,33 @@
   <div>
     <label>
       Card:
-      <input formControlName="card_id" placeholder="Your card_id">
+      <select formControlName="card_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Select Card</option>
+        <option *ngFor="let card of cards" value="{{card.id}}">{{card.title|titlecase }} {{card.number}}</option>
+      </select>
     </label>
-    <div *ngIf="myForm.get('card_id')?.invalid && (myForm.get('card_id')?.dirty || myForm.get('card_id')?.touched)">
-      Please provide a valid card_id address.
-    </div>
   </div>
 
   <div>
     <label>
       Sender:
-      <input formControlName="sender_id" placeholder="Your sender_id">
+      <select formControlName="sender_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Select Sender</option>
+        <option *ngFor="let sender of receivers" value="{{sender.id}}">{{sender.full_name|titlecase }}</option>
+      </select>
     </label>
-    <div *ngIf="myForm.get('sender_id')?.invalid && (myForm.get('sender_id')?.dirty || myForm.get('sender_id')?.touched)">
-      Please provide a valid sender_id address.
-    </div>
   </div>
 
   <div>
     <label>
       Receiver:
-      <input formControlName="receiver_id" placeholder="Your receiver_id">
+      <select formControlName="receiver_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+        <option selected>Select Receiver</option>
+        <option *ngFor="let receiver of receivers" value="{{receiver.id}}">{{receiver.full_name|titlecase }}</option>
+      </select>
     </label>
-    <div *ngIf="myForm.get('receiver_id')?.invalid && (myForm.get('receiver_id')?.dirty || myForm.get('receiver_id')?.touched)">
-      Please provide a valid receiver_id address.
-    </div>
   </div>
-  <button type="submit" [disabled]="myForm.invalid">Send</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Send</button>
+  <a routerLink="/particulars/index" class="btn btn-light" routerLinkActive="active">Back</a>
+
 </form>

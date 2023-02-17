@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'user_information', component: UserInformationComponent },
   { path: 'users/index', component: UserComponent },
   { path: 'particulars/index', component: IndexComponent },
-  { path: 'particular/form', component: ParticularFormComponent },
+  { path: 'particulars/form', component: ParticularFormComponent },
   { path: '', component: SignInComponent }
 ];
 
