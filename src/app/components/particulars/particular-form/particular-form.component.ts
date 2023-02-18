@@ -32,7 +32,6 @@ export class ParticularFormComponent implements OnInit {
     this._http.get('cards').subscribe(
       (response: any) => {
         console.warn("cards", response)
-        console.warn("##############")
         this.cards = response
       },
       err => {
@@ -44,9 +43,7 @@ export class ParticularFormComponent implements OnInit {
   get_receiver() {
     this._http.get('user_informations').subscribe(
       (response: any) => {
-        console.warn("##############")
         console.warn("user_informations", response)
-        console.warn("##############")
         this.receivers = response
       },
       err => {
