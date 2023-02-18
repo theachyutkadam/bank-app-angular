@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { UserInformationsService } from 'src/app/connections/service/user-informations.service';
+// import { UserInformationsService } from 'src/app/connections/service/user-informations.service';
+import { HttpServices } from 'src/app/connections/service/http-services';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +13,27 @@ import { UserInformationsService } from 'src/app/connections/service/user-inform
   styleUrls: ['./user-information.component.css']
 })
 export class UserInformationComponent {
-  user_informations_data: any;
+  user_informations: any;
 
+  constructor(private _http: HttpServices) { }
+  ngOnInit() {
+    // user_informations API Call
+    this.getUserInformations()
+  }
 
-  constructor(private userInformationsData: UserInformationsService) {
-    userInformationsData.user_informations_function().subscribe((data: any) => {
-      console.log("****************");
-      console.log(sessionStorage.getItem('userToken'));
-      console.log("****************");
-      console.warn("data", data)
-      this.user_informations_data = data
-    });
-
+  getUserInformations() {
+    this._http.get('user_informations')
+    .subscribe(
+      (response: any) => {
+        console.warn("##############")
+        console.warn("response", response)
+        console.warn("##############")
+        this.user_informations = response
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 
 }

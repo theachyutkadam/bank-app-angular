@@ -19,11 +19,11 @@ export class HttpServices {
     'Accept': 'application/json',
     'content-type': 'application/json',
     'UserInformationId': `${userInformationId}`,
-    'Authorization': `Bearer ${authToken}`,
+    'Authorization': `${authToken}`,
   })
 
   get(url: any): Observable<any>{
-    return this._http.get(`${api_base_url}${url}`)
+    return this._http.get(`${api_base_url}${url}`, {headers: this.httpHeaderWithToken})
   }
 
   postApi(url: any, obj: any){

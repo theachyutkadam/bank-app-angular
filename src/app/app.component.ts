@@ -1,5 +1,6 @@
 import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { HttpServices } from 'src/app/connections/service/http-services';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // current_user = false;
-  // const userToken = sessionStorage.getItem('userToken')
-  // if (userToken) {
-  //   current_user = true;
-  // } else {
-  //   current_user = false;
-  // }
+  constructor(private _http: HttpServices) { }
+  ngOnInit() {
+    // Particulars API Call
+    // this.logout()
+  }
+
+  logout() {
+    this._http.get('users/logout')
+    .subscribe(
+      (response: any) => {
+        console.warn("###logout###########")
+        console.warn("logout", response)
+        console.warn("###logout###########")
+        response
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
 }

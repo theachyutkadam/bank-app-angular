@@ -6,6 +6,7 @@
       Amount:
       <input formControlName="amount" class="form-control" placeholder="Your amount">
     </label>
+
     <div *ngIf="myForm.get('amount')?.invalid && (myForm.get('amount')?.dirty || myForm.get('amount')?.touched)">
       Please provide a amount.
     </div>
@@ -18,8 +19,6 @@
       </select>
     </label>
 
-    <input type="hidden" formControlName="sender_id" value="{{sender_id}}">
-
     <label>
       Receiver:
       <select formControlName="receiver_id" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
@@ -28,7 +27,6 @@
       </select>
     </label>
     <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Send</button>
-    <a routerLink="/particulars/index" class="btn btn-light" routerLinkActive="active">Back</a>
   </div>
 
 </form>

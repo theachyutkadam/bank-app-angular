@@ -10,7 +10,7 @@
       <th scope="col">Receiver</th>
       <th scope="col">Created At</th>
       <!-- <th scope="col">Description</th> -->
-      <th colspan="3" class="text-center"><a routerLink="/particulars/form" class="btn btn-primary" routerLinkActive="active">New</a></th>
+      <th colspan="2" class="text-center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -22,9 +22,9 @@
       <td>{{particular.receiver_id}}</td>
       <td>{{particular.created_at}}</td>
       <!-- <td>{{user_information.description}}</td> -->
-      <td><a routerLink="/users/index" class="btn btn-success" routerLinkActive="active">Edit</a></td>
-      <td><a routerLink="/users/index" class="btn btn-info" routerLinkActive="active">Show</a></td>
-      <td><a routerLink="/users/index" class="btn btn-danger" routerLinkActive="active">Destroy</a></td>
+      <td><a routerLink="/users/index" class="btn btn-success" routerLinkActive="active">Show</a></td>
+      <td><a routerLink="/users/index" class="btn btn-warning" routerLinkActive="active">Undo</a></td>
+      <!-- <td><a routerLink="/users/index" class="btn btn-danger" routerLinkActive="active">Destroy</a></td> -->
     </tr>
   </tbody>
 </table>[]

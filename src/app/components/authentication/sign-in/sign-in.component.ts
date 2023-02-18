@@ -20,7 +20,7 @@ export class SignInComponent implements OnInit {
   initializeform(){
     this.myForm = this.fb.group({
       email: ['admin@gmail.com', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['123456', [Validators.required]]
     })
   }
 
@@ -41,6 +41,7 @@ export class SignInComponent implements OnInit {
         else{
           console.log('------true');
           console.warn('response:', response);
+          sessionStorage.clear();
           sessionStorage.setItem('authToken', response['auth_token']);
           sessionStorage.setItem('userInformationId', response['user_information_id']);
         }

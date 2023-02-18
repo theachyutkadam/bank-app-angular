@@ -11,12 +11,11 @@ export class ParticularFormComponent implements OnInit {
   myForm!: FormGroup;
   cards: any;
   receivers: any;
-  sender: any;
+  title = "sample"
   constructor(private _http: HttpServices, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initializeform()
-    this.sender = sessionStorage.getItem('userInformationId');
   }
 
   initializeform(){
@@ -25,7 +24,6 @@ export class ParticularFormComponent implements OnInit {
     this.myForm = this.fb.group({
       amount: ['', [Validators.required]],
       card_id: ['', [Validators.required]],
-      sender_id: ['', [Validators.required]],
       receiver_id: ['', [Validators.required]]
     })
   }
@@ -62,7 +60,7 @@ export class ParticularFormComponent implements OnInit {
     let particularObj = {
       'amount': form.value.amount,
       'card_id': form.value.card_id,
-      'sender_id': form.value.sender_id,
+      'sender_id': sessionStorage.getItem('userInformationId'),
       'receiver_id': form.value.receiver_id
     }
 

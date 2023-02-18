@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user_information of user_informations_data">
+    <tr *ngFor="let user_information of user_informations">
       <!-- <td scope="row">{{user_information.id}}</td> -->
       <td><a routerLink="/users/index" routerLinkActive="active">{{user_information.full_name}}</a></td>
       <td>{{user_information.contact}}</td>
