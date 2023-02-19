@@ -18,9 +18,8 @@ export class AppComponent {
     this._http.get('users/logout')
     .subscribe(
       (response: any) => {
-        console.warn("###logout###########")
+        sessionStorage.clear();
         console.warn("logout", response)
-        console.warn("###logout###########")
         response
       },
       err => {
