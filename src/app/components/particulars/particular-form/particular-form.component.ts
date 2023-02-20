@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServices } from 'src/app/connections/service/http-services';
-
+import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-particular-form',
   templateUrl: './particular-form.component.html',
@@ -12,10 +13,14 @@ export class ParticularFormComponent implements OnInit {
   cards: any;
   receivers: any;
   title = "sample"
-  constructor(private _http: HttpServices, private fb: FormBuilder) {}
+  constructor(private _http: HttpServices, private fb: FormBuilder, private router:Router) {}
 
   ngOnInit() {
     this.initializeform()
+  }
+
+  simpleAlert(){
+    Swal.fire('Transaction is successfull!');
   }
 
   initializeform(){
@@ -63,9 +68,10 @@ export class ParticularFormComponent implements OnInit {
 
     this._http.postApi('particulars',particularObj).subscribe(
       (response:any) => {
+        console.warn('Parti-Entry:', response);
         console.log('++++++++++++');
-        console.warn('response:', response);
-        console.log('++++++++++++');
+        this.simpleAlert();
+        this.router.navigate(['/particulars/index']);
       }
     )
   }
