@@ -1,24 +1,23 @@
-<p>
-  <mat-toolbar>
-    <span>Dashboard</span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/users/index">
-      <span>Users</span>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/user_informations">
-      <span>User Informations</span>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/particulars/index">
-      <span>Particulars</span>
-    </button>
-    <span class="example-spacer"></span>
+<div *ngIf="isLogin">
+  <p>
+    <mat-toolbar>
+      <span>Dashboard</span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/users/index">
+        <span>Users</span>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/user_informations">
+        <span>User Informations</span>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/particulars/index">
+        <span>Particulars</span>
+      </button>
+      <span class="example-spacer"></span>
 
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"  (click)="logout();">
-      <span>Logout</span>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" routerLink="/">
-      <span>Login</span>
-    </button>
-  </mat-toolbar>
-</p>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout();">
+        <span>Logout</span>
+      </button>
+    </mat-toolbar>
+  </p>
+</div>
 
 <router-outlet></router-outlet>

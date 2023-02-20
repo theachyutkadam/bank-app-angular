@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServices } from 'src/app/connections/service/http-services';
-
+import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -11,12 +12,27 @@ import { HttpServices } from 'src/app/connections/service/http-services';
 export class SignInComponent implements OnInit {
   myForm!: FormGroup;
 
-  constructor(private _http: HttpServices, private fb: FormBuilder) {}
+  constructor(private _http: HttpServices, private fb: FormBuilder, private router:Router) {}
 
   ngOnInit() {
     this.initializeform()
   }
 
+  simpleAlert(){
+    Swal.fire('Hello world!');
+  }
+
+  alertWithSuccess(){
+    Swal.fire('Welcome...', 'You Login succesfully!', 'success')
+  }
+
+  alertWithError(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something went wrong!'
+    })
+  }
   initializeform(){
     this.myForm = this.fb.group({
       email: ['admin@gmail.com', [Validators.required]],
@@ -36,14 +52,15 @@ export class SignInComponent implements OnInit {
       (response:any) => {
         if(response['status'] && response['status'] !== 200){
           console.log('xxxxxxxxxxerror');
+          this.alertWithError();
           console.warn('error:', response);
         }
         else{
-          console.log('------true');
-          console.warn('response:', response);
           sessionStorage.clear();
           sessionStorage.setItem('authToken', response['auth_token']);
           sessionStorage.setItem('userInformationId', response['user_information_id']);
+          this.alertWithSuccess();
+          this.router.navigate(['users/index']);
         }
       }
     )

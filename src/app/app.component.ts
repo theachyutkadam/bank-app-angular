@@ -1,6 +1,7 @@
-import { Token } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { HttpServices } from 'src/app/connections/service/http-services';
+import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,21 @@ import { HttpServices } from 'src/app/connections/service/http-services';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private _http: HttpServices) { }
+  isLogin = false;
+  constructor(private _http: HttpServices, private router:Router) {
+    if (sessionStorage.getItem('authToken')) {
+      this.isLogin = true
+    }
+  }
   ngOnInit() {
-    // Particulars API Call
-    // this.logout()
+  }
+
+  simpleAlert(){
+    Swal.fire('Logout Successfully!');
+  }
+
+  alertWithSuccess(){
+    Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
   }
 
   logout() {
@@ -21,6 +33,9 @@ export class AppComponent {
         sessionStorage.clear();
         console.warn("logout", response)
         response
+        this.simpleAlert();
+        this.router.navigate(['/']);
+        this.isLogin = false
       },
       err => {
         console.log(err);
