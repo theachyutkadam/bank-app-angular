@@ -1,18 +1,25 @@
-<form class="example-form">
-  <div class="wrapper">
+
+<form [formGroup]="myForm" (ngSubmit)="login(myForm)">
+  <div class="form-group row">
     <h1>Login</h1>
-
-    <mat-form-field appearance="outline" class="example-full-width">
-      <mat-label>Username</mat-label>
-      <input matInput placeholder="x@it-minds.dk" type="text" autocomplete="off" value="username" required/>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" value="password" required/>
-    </mat-form-field>
-
-    <a routerLink="/users/index" class="btn btn-primary" routerLinkActive="active">fUsers</a>
-    <button mat-raised-button color="primary" (click)="onButtonClick()">Log in</button>
+    <label>
+      Email:
+      <input formControlName="email" class="form-control" placeholder="Your email">
+    </label>
+    <div *ngIf="myForm.get('email')?.invalid && (myForm.get('email')?.dirty || myForm.get('email')?.touched)">
+      Please provide a email.
+    </div>
   </div>
+
+  <div class="form-group row">
+    <label>
+      Password:
+      <input formControlName="password" class="form-control" placeholder="Your password">
+    </label>
+    <div *ngIf="myForm.get('password')?.invalid && (myForm.get('password')?.dirty || myForm.get('password')?.touched)">
+      Please provide a password.
+    </div>
+  </div><br>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Login</button>
 </form>

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpServices } from 'src/app/connections/service/http-services';
-
+import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-particular-form',
   templateUrl: './particular-form.component.html',
@@ -11,11 +12,15 @@ export class ParticularFormComponent implements OnInit {
   myForm!: FormGroup;
   cards: any;
   receivers: any;
-
-  constructor(private _http: HttpServices, private fb: FormBuilder) {}
+  title = "sample"
+  constructor(private _http: HttpServices, private fb: FormBuilder, private router:Router) {}
 
   ngOnInit() {
     this.initializeform()
+  }
+
+  simpleAlert(){
+    Swal.fire('Transaction is successfull!');
   }
 
   initializeform(){
@@ -24,7 +29,6 @@ export class ParticularFormComponent implements OnInit {
     this.myForm = this.fb.group({
       amount: ['', [Validators.required]],
       card_id: ['', [Validators.required]],
-      sender_id: ['', [Validators.required]],
       receiver_id: ['', [Validators.required]]
     })
   }
@@ -33,7 +37,6 @@ export class ParticularFormComponent implements OnInit {
     this._http.get('cards').subscribe(
       (response: any) => {
         console.warn("cards", response)
-        console.warn("##############")
         this.cards = response
       },
       err => {
@@ -46,7 +49,6 @@ export class ParticularFormComponent implements OnInit {
     this._http.get('user_informations').subscribe(
       (response: any) => {
         console.warn("user_informations", response)
-        console.warn("##############")
         this.receivers = response
       },
       err => {
@@ -60,15 +62,16 @@ export class ParticularFormComponent implements OnInit {
     let particularObj = {
       'amount': form.value.amount,
       'card_id': form.value.card_id,
-      'sender_id': form.value.sender_id,
+      'sender_id': sessionStorage.getItem('userInformationId'),
       'receiver_id': form.value.receiver_id
     }
 
     this._http.postApi('particulars',particularObj).subscribe(
       (response:any) => {
+        console.warn('Parti-Entry:', response);
         console.log('++++++++++++');
-        console.warn('response:', response);
-        console.log('++++++++++++');
+        this.simpleAlert();
+        this.router.navigate(['/particulars/index']);
       }
     )
   }

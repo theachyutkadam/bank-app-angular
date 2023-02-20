@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, Subject } from 'rxjs';
-import { api_base_url, api_token, user_token } from '../api-config';
+import { api_base_url, authToken, userInformationId } from '../api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +18,16 @@ export class HttpServices {
   httpHeaderWithToken = new HttpHeaders({
     'Accept': 'application/json',
     'content-type': 'application/json',
-    'Authorization': `Bearer ${user_token}`,
+    'UserInformationId': `${userInformationId}`,
+    'Authorization': `${authToken}`,
   })
 
   get(url: any): Observable<any>{
-    return this._http.get(`${api_base_url}${url}`)
+    return this._http.get(`${api_base_url}${url}`, {headers: this.httpHeaderWithToken})
   }
 
   postApi(url: any, obj: any){
-    return this._http.post(`${api_base_url}${url}`, obj)
+    return this._http.post(`${api_base_url}${url}`, obj, {headers: this.httpHeaderWithToken})
   }
 
 }
