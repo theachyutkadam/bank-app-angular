@@ -18,12 +18,12 @@ export class SignInComponent implements OnInit {
     this.initializeform()
   }
 
-  simpleAlert(){
-    Swal.fire('Hello world!');
-  }
-
   alertWithSuccess(){
     Swal.fire('Welcome...', 'You Login succesfully!', 'success')
+  }
+
+  alertWithDanger(){
+    Swal.fire('OOPS', 'Invalid Email', 'error')
   }
 
   alertWithError(){
@@ -52,8 +52,8 @@ export class SignInComponent implements OnInit {
       (response:any) => {
         if(response['status'] && response['status'] !== 200){
           console.log('xxxxxxxxxxerror');
-          this.alertWithError();
           console.warn('error:', response);
+          this.alertWithDanger();
         }
         else{
           sessionStorage.clear();
